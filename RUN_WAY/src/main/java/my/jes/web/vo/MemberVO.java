@@ -3,12 +3,18 @@ package my.jes.web.vo;
 import my.jes.web.util.MyException;
 
 public class MemberVO {
-private String id,pw,name, email, gender;
-private Integer age, weight, height;
+private String id;
+private String pw;
+private String name;
+private String email;
+private String gender;
+private int age;
+private float weight;
+private float height;
 	
 	
 
-	public MemberVO(String id, String pw, String name, String email, Integer age, Integer weight, Integer height, String gender) throws MyException {
+	public MemberVO(String id, String pw, String name, String email, int age, float weight, float height, String gender) throws MyException {
 		this(id,pw);
 		setName(name);
 		setEmail(email);
@@ -22,6 +28,10 @@ private Integer age, weight, height;
 		super();
 		setId(id);
 		setPw(pw);
+	}
+	
+	public MemberVO(int age, float weight, float height, String gender) {
+		super();
 	}
 
 	public MemberVO() {
@@ -69,7 +79,7 @@ private Integer age, weight, height;
 	}
 
 	public void setEmail(String email) throws MyException {
-		if(email!=null) {
+		if(email != null) {
 			this.email = email;
 		}else {
 			throw new MyException("email가 입력되지 않았습니다");
@@ -92,35 +102,35 @@ private Integer age, weight, height;
 		return age;
 	}
 
-	public void setAge(Integer age) throws MyException {
-		if(age!=null) {
+	public void setAge(int age) throws MyException {
+		if(age > 0) {
 			this.age = age;
 		}else {
-			throw new MyException("age가 입력되지 않았습니다");
+			throw new MyException("올바른 나이를 입력해주세요");
 		}
 	}
 
-	public Integer getWeight() {
+	public float getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Integer weight) throws MyException {
-		if(weight!=null) {
+	public void setWeight(float weight) throws MyException {
+		if(weight > 0) {
 			this.weight = weight;
 		}else {
-			throw new MyException("weight가 입력되지 않았습니다");
+			throw new MyException("올바른 몸무게를 입력해주세요");
 		}
 	}
 
-	public Integer getHeight() {
+	public float getHeight() {
 		return height;
 	}
 
-	public void setHeight(Integer height) throws MyException {
-		if(height!=null) {
+	public void setHeight(float height) throws MyException {
+		if(height > 0) {
 			this.height = height;
 		}else {
-			throw new MyException("height가 입력되지 않았습니다");
+			throw new MyException("올바른 키를 입력해주세요");
 		}
 	}
 
