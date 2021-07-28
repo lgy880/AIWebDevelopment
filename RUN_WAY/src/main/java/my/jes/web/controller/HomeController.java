@@ -1,18 +1,17 @@
 package my.jes.web.controller;
 
+import java.sql.Array;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import my.jes.web.service.MemberService;
@@ -24,9 +23,9 @@ public class HomeController {
 	@Autowired
 	MemberService memberService;
 
+	// 회원탈퇴
 	@RequestMapping(value = "memberDelete.jes", method = {
 			RequestMethod.POST }, produces = "application/text; charset=utf8")
-	
 	public String memberDelete(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession(false);
@@ -37,8 +36,8 @@ public class HomeController {
 		return "";
 	}
 
+	// 로그아웃
 	@RequestMapping(value = "logout.jes", method = { RequestMethod.POST }, produces = "application/text; charset=utf8")
-	
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession(false);
@@ -46,9 +45,10 @@ public class HomeController {
 		return "";
 	}
 
-	
-	  @PostMapping("login.jes")	
-	public MemberVO login(@ModelAttribute("info") MemberVO m, HttpServletRequest request, HttpServletResponse response) {
+	// 로그인
+	@PostMapping("login.jes")
+	public MemberVO login(@ModelAttribute("info") MemberVO m, HttpServletRequest request,
+			HttpServletResponse response) {
 
 		try {
 
@@ -60,27 +60,26 @@ public class HomeController {
 				session.setAttribute("member", m);
 				m.setName(name);
 			} else {
-				m=new MemberVO();
+				m = new MemberVO();
 			}
 		} catch (Exception e) {
-			m=new MemberVO();
+			m = new MemberVO();
 		}
 
 		return m;
-		
+
 	}
 
+	// 회원가입
 	@RequestMapping(value = "memberInsert.jes", method = {
 			RequestMethod.POST }, produces = "application/text; charset=utf8")
-	
 	public String memberInsert(@RequestParam("id") String id, @RequestParam("pw") String pw,
 			@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "email", required = false) String email,
-			@RequestParam(value = "age", required = false) Integer age,
-			@RequestParam(value = "weight", required = false) Integer weight,
-			@RequestParam(value = "height", required = false) Integer height,
-			@RequestParam(value = "gender", required = false) String gender,
-			HttpServletRequest request,
+			@RequestParam(value = "age", required = false) int age,
+			@RequestParam(value = "weight", required = false) float weight,
+			@RequestParam(value = "height", required = false) float height,
+			@RequestParam(value = "gender", required = false) String gender, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		MemberVO m = new MemberVO(id, pw, name, email, age, weight, height, gender);
@@ -92,6 +91,31 @@ public class HomeController {
 		} catch (Exception e) {
 			return e.getMessage();
 		}
+
+	}
+
+	// 칼로리계산
+	@PostMapping("getCal.jes")
+	public MemberVO getCal(@ModelAttribute("calorie") MemberVO m, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+
+		int calorie = 0;
+
+		try {
+
+			Array[] default_value = memberService.getCal(m);
+			if (default_value != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("member", m);
+				
+			} else {
+				m = new MemberVO();
+			}
+		} catch (Exception e) {
+			m = new MemberVO();
+		}
+
+		return m;
 
 	}
 

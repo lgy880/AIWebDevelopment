@@ -1,5 +1,7 @@
 package my.jes.web.dao;
 
+import java.sql.Array;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,10 @@ public class MemberDAO {
 	public void deleteMember(MemberVO m) {
 		sqlSession.delete("mapper.member.deleteMember", m.getId());
 		
+	}
+
+	public Array[] getCal(MemberVO m) {
+		return sqlSession.selectOne("mapper.member.getCal", m);
 	}
 
 }

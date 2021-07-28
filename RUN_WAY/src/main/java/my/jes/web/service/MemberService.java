@@ -1,5 +1,7 @@
 package my.jes.web.service;
 
+import java.sql.Array;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,10 @@ public class MemberService {
 
 	public void deleteMember(MemberVO m) {
 		memberDAO.deleteMember(m);		
+	}
+	
+	public Array[] getCal(MemberVO m) {
+		return memberDAO.getCal(m);
 	}
 
 }
