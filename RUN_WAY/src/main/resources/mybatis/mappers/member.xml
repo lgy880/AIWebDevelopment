@@ -15,6 +15,13 @@
 		<result property="height" column="height" />
 		<result property="gender" column="gender" />
 	</resultMap>
+	
+	<resultMap type="memberVO" id="calInfo">
+		<result property="age" column="age" />
+		<result property="weight" column="weight" />
+		<result property="height" column="height" />
+		<result property="gender" column="gender" />
+	</resultMap>
 
 	<select id="selectAllMemberList" resultMap="memResult">
 		<![CDATA[
@@ -64,7 +71,7 @@
 
 	</delete>
 
-	<select id="getCal" resultType="String" parameterType="memberVO">
+	<select id="getCal" resultMap="calInfo" parameterType="String">
 		<![CDATA[
 			select age, weight, height, gender from user_db where id=#{id}
 		]]>
