@@ -57,7 +57,7 @@ var login=$.cookie('logined');
 			$("#default_height").val(data.height);
 			$("#default_weight").val(data.weight);
 		},
-		error:function(){ 
+		error:function(){
 		}
 	});
 
