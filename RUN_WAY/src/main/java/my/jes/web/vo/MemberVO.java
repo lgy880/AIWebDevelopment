@@ -30,7 +30,7 @@ private float height;
 		setPw(pw);
 	}
 	
-	public MemberVO(int age, float weight, float height, String gender) {
+	public MemberVO(int age, float weight, float height) {
 		super();
 	}
 

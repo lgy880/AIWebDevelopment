@@ -29,9 +29,14 @@
 		]]>
 	</select>
 
-	<select id="login" resultType="String" parameterType="memberVO">
+	<!-- <select id="login" resultType="String" parameterType="memberVO">
 		<![CDATA[
-			select name from user_db where id=#{id} and pw=#{pw}
+			select * from user_db where id=#{id} and pw=#{pw}
+		]]>
+	</select> -->
+	<select id="login" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[
+			select * from user_db where id=#{id} and pw=#{pw}
 		]]>
 	</select>
 
@@ -71,10 +76,19 @@
 
 	</delete>
 
+<<<<<<< HEAD
 	<select id="getCal" resultMap="calInfo" parameterType="String">
 		<![CDATA[
 			select age, weight, height, gender from user_db where id=#{id}
 		]]>
+=======
+	<select id="getCal" resultType="memberVO" parameterType="String">
+		
+			select age, weight, height
+			from user_db 
+			where id=#{id} 
+		
+>>>>>>> cal_calorie
 	</select>
 
 
