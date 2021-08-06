@@ -118,26 +118,21 @@ $(document).ready(function(){
 				var id=$("#id").val();
 				var pw=$("#pw").val();
 				
-				//alert(id+":"+pw);		
-				
 				$.post("login.jes",
 					  {			   
 					    id,
 					    pw
 					  },
-					  function(data, status){			
-						console.log(data);				
-					  //	const obj=JSON.parse(data); // {"name","전은수"} {id:"a",pw:"a",name:"전은수"}
+					  function(data, status){	
+							
 					  	if(data.name){
 					  		data = data.name+"님 환영합니다! &nbsp<input type='button' value='LOGOUT' id='logoutBtn' class='btn-primary'>";	
-						  	console.log(data);	
-						  	$.cookie("logined",data);    			  	
+						  	$.cookie("logined", id);    			  	
 							$("#msgDiv").html(data);		
 					  	}else{
 					  		alert("login fail");
 							location.reload();	
 					  	}
-					  	
 					  					   
 					  }
 				);//end post() 

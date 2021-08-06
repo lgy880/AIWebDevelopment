@@ -1,12 +1,11 @@
 package my.jes.web.controller;
 
-import java.sql.Array;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,28 +44,44 @@ public class HomeController {
 		return "";
 	}
 
+//	// 로그인
+//	@PostMapping("login.jes")
+//	public MemberVO login(@ModelAttribute("info") MemberVO m, HttpServletRequest request,
+//			HttpServletResponse response) {
+//
+//		try {
+//
+//			System.out.println(m);
+//
+//			String name = memberService.login(m);
+//			if (name != null) {// ok HttpSession
+//				HttpSession session = request.getSession();
+//				session.setAttribute("member", m);
+//				m.setName(name);
+//			} else {
+//				m = new MemberVO();
+//			}
+//		} catch (Exception e) {
+//			m = new MemberVO();
+//		}
+//
+//		return m;
+//
+//	}
 	// 로그인
 	@PostMapping("login.jes")
-	public MemberVO login(@ModelAttribute("info") MemberVO m, HttpServletRequest request,
+	public MemberVO login(@ModelAttribute("info") MemberVO m, HttpSession session,
 			HttpServletResponse response) {
 
-		try {
 
-			System.out.println(m);
+		MemberVO mem = memberService.login(m);
+		
+		
+		if(mem != null && mem.getId().equals("")) {
+		    session.setAttribute("member", mem);				
+		}	
 
-			String name = memberService.login(m);
-			if (name != null) {// ok HttpSession
-				HttpSession session = request.getSession();
-				session.setAttribute("member", m);
-				m.setName(name);
-			} else {
-				m = new MemberVO();
-			}
-		} catch (Exception e) {
-			m = new MemberVO();
-		}
-
-		return m;
+		return mem;
 
 	}
 
@@ -94,29 +109,13 @@ public class HomeController {
 
 	}
 
-	// 칼로리계산
-	@PostMapping("getCal.jes")
-	public MemberVO getCal(@ModelAttribute("calorie") MemberVO m, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-
-		int calorie = 0;
-
-		try {
-
-			Array[] default_value = memberService.getCal(m);
-			if (default_value != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("member", m);
-				
-			} else {
-				m = new MemberVO();
-			}
-		} catch (Exception e) {
-			m = new MemberVO();
-		}
-
-		return m;
-
+	// 칼로리계산 기본정보 가져오기
+	@GetMapping("getCal.jes")
+	public MemberVO getCal(MemberVO m, HttpSession session) throws Exception {
+		
+		MemberVO mem = memberService.getCal(m);
+		
+		return mem;
 	}
 
 }
