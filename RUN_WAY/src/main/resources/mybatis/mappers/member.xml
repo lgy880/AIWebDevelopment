@@ -76,19 +76,11 @@
 
 	</delete>
 
-<<<<<<< HEAD
-	<select id="getCal" resultMap="calInfo" parameterType="String">
-		<![CDATA[
-			select age, weight, height, gender from user_db where id=#{id}
-		]]>
-=======
 	<select id="getCal" resultType="memberVO" parameterType="String">
 		
 			select age, weight, height
 			from user_db 
 			where id=#{id} 
-		
->>>>>>> cal_calorie
 	</select>
 
 
