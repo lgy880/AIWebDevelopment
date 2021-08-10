@@ -8,7 +8,6 @@ $(document).ready(function() {
 		data:{id:login},
 		success:function(data){
 			
-			$("#email").val(data.email);
 			data = data.name + "님 환영합니다! &nbsp<input type='button' value='LOGOUT' id='logoutBtn' class='btn-primary'>";			
 			$("#msgDiv").html(data);
 		},
