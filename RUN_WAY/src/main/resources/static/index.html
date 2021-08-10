@@ -171,12 +171,12 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="#">RUN WAY</a>
-      	<div id="msgDiv" class="navbar-brand ">
-			ID<input size="5" id="id" style="color:black;">
-			PW<input size="5" id="pw" type="password" style="color:black;">
-			<input type="button" id="loginBtn" value="LOGIN" style="color:black;">
-			<input type="button" value="SIGN UP" style="color:black;" onclick='window.open("html/memberInsertForm.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>
-		</div>
+      <div id="msgDiv" class="navbar-brand ">
+		ID<input size="5" id="id" style="color:black;">
+		PW<input size="5" id="pw" type="password" style="color:black;">
+		<input type="button" id="loginBtn" value="LOGIN" style="color:black;">
+		<input type="button" value="SIGN UP" style="color:black;" onclick='window.open("html/memberInsertForm.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>
+	</div>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -350,7 +350,7 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
   // Initialize Tooltip
   $('[data-toggle="tooltip"]').tooltip(); 
@@ -379,6 +379,7 @@ $(document).ready(function(){
     } // End if
   });
 })
+
 </script>
 
 </body>

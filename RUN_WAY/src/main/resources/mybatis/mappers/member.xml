@@ -77,10 +77,9 @@
 	</delete>
 
 	<select id="getCal" resultType="memberVO" parameterType="String">
-		
-			select age, weight, height
-			from user_db 
-			where id=#{id} 
+			SELECT id, name, age, gender, height, weight, email
+			FROM user_db 
+			WHERE id=#{id} 
 	</select>
 
 
