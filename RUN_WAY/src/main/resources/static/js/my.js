@@ -7,9 +7,10 @@ $(document).ready(function() {
 		type:"get",
 		data:{id:login},
 		success:function(data){
-			
-			data = data.name + "님 환영합니다! &nbsp<input type='button' value='LOGOUT' id='logoutBtn' class='btn-primary'>";			
-			$("#msgDiv").html(data);
+			if (data.name != null) {
+				data = data.name + "님 환영합니다! &nbsp<input type='button' value='LOGOUT' id='logoutBtn' class='btn-primary'>";			
+				$("#msgDiv").html(data);
+			}
 		},
 		error:function(){ 
 		}
@@ -137,9 +138,9 @@ $(document).ready(function() {
 			function(data, status) {
 
 				if (data.name) {
-					data = data.name + "님 환영합니다! &nbsp<input type='button' value='LOGOUT' id='logoutBtn' class='btn-primary'>";
 					$.cookie("logined", id);
 					$("#msgDiv").html(data);
+					location.reload();
 				} else {
 					alert("login fail");
 					location.reload();
@@ -178,6 +179,25 @@ $(document).ready(function() {
 			}
 		);//end post() 
 	});//
+	
+	//문의내용 접수하기(Contact us)
+	$("#contact_send_btn").click(function() {
+
+		const name = $("#contact_name").val();
+		const email = $("#contact_email").val();
+		const comment = $("textarea#contact_comment").val();
+
+		$.post("../insertContact.jes",
+			{
+				name,
+				email,
+				comment
+			},
+			function(data, status) {
+				alert(name + "님 문의내용이 접수되었습니다.\n조속한 시일내에 답변드릴 수 있도록 하겠습니다.");
+			}
+		);
+	});
 
 
 });

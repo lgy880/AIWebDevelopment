@@ -3,19 +3,19 @@ package my.jes.web.vo;
 import my.jes.web.util.MyException;
 
 public class MemberVO {
-private String id;
-private String pw;
-private String name;
-private String email;
-private String gender;
-private int age;
-private float weight;
-private float height;
 	
-	
+	private String id;
+	private String pw;
+	private String name;
+	private String email;
+	private String gender;
+	private int age;
+	private float weight;
+	private float height;
 
-	public MemberVO(String id, String pw, String name, String email, int age, float weight, float height, String gender) throws MyException {
-		this(id,pw);
+	public MemberVO(String id, String pw, String name, String email, int age, float weight, float height, String gender)
+			throws MyException {
+		this(id, pw);
 		setName(name);
 		setEmail(email);
 		setAge(age);
@@ -29,7 +29,7 @@ private float height;
 		setId(id);
 		setPw(pw);
 	}
-	
+
 	public MemberVO(int age, float weight, float height) {
 		super();
 	}
@@ -43,9 +43,9 @@ private float height;
 	}
 
 	public void setId(String id) throws MyException {
-		if(id!=null) {
+		if (id != null) {
 			this.id = id;
-		}else {
+		} else {
 			throw new MyException("id가 입력되지 않았습니다");
 		}
 	}
@@ -55,9 +55,9 @@ private float height;
 	}
 
 	public void setPw(String pw) throws MyException {
-		if(pw!=null) {
+		if (pw != null) {
 			this.pw = pw;
-		}else {
+		} else {
 			throw new MyException("pw가 입력되지 않았습니다");
 		}
 	}
@@ -67,21 +67,21 @@ private float height;
 	}
 
 	public void setName(String name) throws MyException {
-		if(name!=null) {
+		if (name != null) {
 			this.name = name;
-		}else {
+		} else {
 			throw new MyException("name가 입력되지 않았습니다");
 		}
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) throws MyException {
-		if(email != null) {
+		if (email != null) {
 			this.email = email;
-		}else {
+		} else {
 			throw new MyException("email가 입력되지 않았습니다");
 		}
 	}
@@ -91,9 +91,9 @@ private float height;
 	}
 
 	public void setGender(String gender) throws MyException {
-		if(gender!=null) {
+		if (gender != null) {
 			this.gender = gender;
-		}else {
+		} else {
 			throw new MyException("gender가 입력되지 않았습니다");
 		}
 	}
@@ -103,9 +103,9 @@ private float height;
 	}
 
 	public void setAge(int age) throws MyException {
-		if(age > 0) {
+		if (age > 0) {
 			this.age = age;
-		}else {
+		} else {
 			throw new MyException("올바른 나이를 입력해주세요");
 		}
 	}
@@ -115,9 +115,9 @@ private float height;
 	}
 
 	public void setWeight(float weight) throws MyException {
-		if(weight > 0) {
+		if (weight > 0) {
 			this.weight = weight;
-		}else {
+		} else {
 			throw new MyException("올바른 몸무게를 입력해주세요");
 		}
 	}
@@ -127,18 +127,17 @@ private float height;
 	}
 
 	public void setHeight(float height) throws MyException {
-		if(height > 0) {
+		if (height > 0) {
 			this.height = height;
-		}else {
+		} else {
 			throw new MyException("올바른 키를 입력해주세요");
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", gender=" + gender + ", age="
-				+ age + ", weight=" + weight + ", height=" + height + "]";
+		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", gender=" + gender
+				+ ", age=" + age + ", weight=" + weight + ", height=" + height + "]";
 	}
 
-	
 }
