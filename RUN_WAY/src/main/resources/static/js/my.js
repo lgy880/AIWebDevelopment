@@ -103,9 +103,9 @@ $(document).ready(function() {
 		const age = $("#age").val();
 		const weight = $("#weight").val();
 		const height = $("#height").val();
-		const gender = $("#gender").val();
-
-		//alert(name+":"+id+":"+pw);
+		const gender = $(":input:radio[name=gender]:checked").val();
+		
+		alert(gender);
 
 		$.post("../memberInsert.jes",
 			{

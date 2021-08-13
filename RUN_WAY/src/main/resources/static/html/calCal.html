@@ -51,15 +51,28 @@ var login=$.cookie('logined');
 		type:"get",
 		data:{id:login},
 		success:function(data){
-			console.log(data);
 			
+			var radioVal = data.gender;
+			console.log(data);
 			$("#default_age").val(data.age);
 			$("#default_height").val(data.height);
 			$("#default_weight").val(data.weight);
+			$(":radio[name='default_gender']").radioSelect(radioVal);
 		},
 		error:function(){ 
 		}
 	});
+	
+	$.fn.radioSelect = function(val) {
+		 this.each(function() {
+		 	var $this = $(this);
+		 	if($this.val() == val){
+				$this.attr('checked', true);
+		 	}
+		 });
+		 return this;
+	};
+
 </script>
 </body>
 </html>
