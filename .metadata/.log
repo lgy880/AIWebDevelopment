@@ -8944,3 +8944,27 @@ Binding(COMMAND+SHIFT+C,
 
 !ENTRY Activator 1 0 2021-08-13 13:26:39.941
 !MESSAGE Has main method computation for project 'RUN_WAY'
+
+!ENTRY Activator 1 0 2021-08-13 16:27:04.791
+!MESSAGE Has main method computation for project 'RUN_WAY'
+
+!ENTRY Activator 1 0 2021-08-13 16:27:05.326
+!MESSAGE Has main method computation for project 'RUN_WAY'
+
+!ENTRY Activator 1 0 2021-08-13 16:30:39.753
+!MESSAGE Has main method computation for project 'RUN_WAY'
+
+!ENTRY Activator 1 0 2021-08-13 16:30:39.928
+!MESSAGE Has main method computation for project 'RUN_WAY'
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-08-13 16:30:41.852
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.syBswZXH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-08-13 16:30:41.852
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.syBswZXH
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-08-13 16:30:41.852
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-08-13 16:30:41.852
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.syBswZXH => OK
