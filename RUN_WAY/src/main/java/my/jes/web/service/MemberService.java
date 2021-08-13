@@ -1,7 +1,5 @@
 package my.jes.web.service;
 
-import java.sql.Array;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,23 +8,27 @@ import my.jes.web.vo.MemberVO;
 
 @Service
 public class MemberService {
-	
+
 	@Autowired
 	MemberDAO memberDAO;
 
-	public void memberInsert(MemberVO m) throws Exception{
+	public void memberInsert(MemberVO m) throws Exception {
 		memberDAO.memberInsert(m);
 	}
 
-	public String login(MemberVO m) {		
+//	public String login(MemberVO m) {		
+//		return memberDAO.login(m);
+//	}
+	public MemberVO login(MemberVO m) {
+		System.out.println(memberDAO.login(m));
 		return memberDAO.login(m);
 	}
 
 	public void deleteMember(MemberVO m) {
-		memberDAO.deleteMember(m);		
+		memberDAO.deleteMember(m);
 	}
-	
-	public Array[] getCal(MemberVO m) {
+
+	public MemberVO getCal(MemberVO m) {
 		return memberDAO.getCal(m);
 	}
 

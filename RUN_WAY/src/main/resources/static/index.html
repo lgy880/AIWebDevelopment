@@ -171,18 +171,18 @@
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="#">RUN WAY</a>
-      	<div id="msgDiv" class="navbar-brand ">
-			ID<input size="5" id="id" style="color:black;">
-			PW<input size="5" id="pw" type="password" style="color:black;">
-			<input type="button" id="loginBtn" value="LOGIN" style="color:black;">
-			<input type="button" value="SIGN UP" style="color:black;" onclick='window.open("html/memberInsertForm.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>
-		</div>
+      <div id="msgDiv" class="navbar-brand ">
+		ID<input size="5" id="id" style="color:black;">
+		PW<input size="5" id="pw" type="password" style="color:black;">
+		<input type="button" id="loginBtn" value="LOGIN" style="color:black;">
+		<input type="button" value="SIGN UP" style="color:black;" onclick='window.open("html/memberInsertForm.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>
+	</div>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#myPage">HOME</a></li>
         <li><a href="#profile" onclick='window.open("jsp/memberInserForm.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>PROFILE</a></li>
-        <li><a href="#" onclick='window.open("html/calCal.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=400,height=800");'>칼로리testver</a></li>
+        <li><a href="#" onclick='window.open("html/calCal.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=500,width=600,height=400");'>칼로리testver</a></li>
         <li><a href="#record">RECORD</a></li>
         <li><a href="#route">SEARCH ROUTES</a></li>
         <li><a href="#notice">NOTICE</a></li>
@@ -320,17 +320,17 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          <input class="form-control" id="contact_name" name="name" placeholder="Name" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form-control" id="contact_email" name="email" placeholder="Email" type="email" required>
         </div>
       </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <textarea class="form-control" id="contact_comment" name="comments" placeholder="Comment" rows="5"></textarea>
       <br>
       <div class="row">
         <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Send</button>
+          <button class="btn pull-right" id="contact_send_btn" type="submit">Send</button>
         </div>
       </div>
     </div>
@@ -350,8 +350,10 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
+	
+	var login=$.cookie('logined');
   // Initialize Tooltip
   $('[data-toggle="tooltip"]').tooltip(); 
   
@@ -378,7 +380,23 @@ $(document).ready(function(){
       });
     } // End if
   });
-})
+  
+  //이메일 자동으로 채워주기
+  $.ajax({
+		url:"../getCal.jes",
+		type:"get",
+		data:{id:login},
+		success:function(data){
+			
+			$("#contact_email").val(data.email);
+			$("#contact_name").val(data.name);
+		},
+		error:function(){ 
+		}
+	});
+  
+});
+
 </script>
 
 </body>

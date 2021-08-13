@@ -15,6 +15,13 @@
 		<result property="height" column="height" />
 		<result property="gender" column="gender" />
 	</resultMap>
+	
+	<resultMap type="memberVO" id="calInfo">
+		<result property="age" column="age" />
+		<result property="weight" column="weight" />
+		<result property="height" column="height" />
+		<result property="gender" column="gender" />
+	</resultMap>
 
 	<select id="selectAllMemberList" resultMap="memResult">
 		<![CDATA[
@@ -22,9 +29,14 @@
 		]]>
 	</select>
 
-	<select id="login" resultType="String" parameterType="memberVO">
+	<!-- <select id="login" resultType="String" parameterType="memberVO">
 		<![CDATA[
-			select name from user_db where id=#{id} and pw=#{pw}
+			select * from user_db where id=#{id} and pw=#{pw}
+		]]>
+	</select> -->
+	<select id="login" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[
+			select * from user_db where id=#{id} and pw=#{pw}
 		]]>
 	</select>
 
@@ -64,11 +76,18 @@
 
 	</delete>
 
-	<select id="getCal" resultType="String" parameterType="memberVO">
-		<![CDATA[
-			select age, weight, height, gender from user_db where id=#{id}
-		]]>
+	<select id="getCal" resultType="memberVO" parameterType="String">
+			SELECT id, name, age, gender, height, weight, email
+			FROM user_db 
+			WHERE id=#{id} 
 	</select>
+	
+	<insert id="insertContact" parameterType="ContactVO">
+		<![CDATA[
+			INSERT INTO contact_db(name, email, comment) 
+			VALUES(#{name}, #{email}, #{comment})
+		]]>
+	</insert>
 
 
 </mapper> 
