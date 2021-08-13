@@ -9,4 +9,7 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="my.jes.web.vo.MemberVO"/>
+    <fullyQualifiedTypeName name="my.jes.web.dao.ContactDAO"/>
+    <fullyQualifiedTypeName name="my.jes.web.vo.ContactVO"/>
+    <fullyQualifiedTypeName name="my.jes.web.service.ContactService"/>
 </qualifiedTypeNameHistroy>
