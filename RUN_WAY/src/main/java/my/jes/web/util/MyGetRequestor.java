@@ -13,8 +13,8 @@ public class MyGetRequestor {
 			URL url=new URL(urlString);
 			con=(HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");	
-			con.setRequestProperty("X-Naver-Client-Id", "EptygZ05wIBjyr8Przi8");
-			con.setRequestProperty("X-Naver-Client-Secret", "qsFSyj1smU");			
+			con.setRequestProperty("X-Naver-Client-Id", "");
+			con.setRequestProperty("X-Naver-Client-Secret", "");			
 		
 			br=new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String oneLine,sum="";

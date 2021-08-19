@@ -16,7 +16,7 @@ public class TMapRequestor {
 			con=(HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");	
 			//con.setRequestProperty("appKey", "put your client-id");
-			con.setRequestProperty("appKey", "l7xxe5f789e074fa48fc99860ae9421175e1");
+			con.setRequestProperty("appKey", "");
 		
 			br=new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String oneLine,sum="";
@@ -26,7 +26,7 @@ public class TMapRequestor {
 			//System.out.println("sum" +sum);
 			return sum;
 		} catch (Exception e) {			
-			e.printStackTrace();
+			//e.printStackTrace();
 			//System.out.println("catch error" );
 			return null;
 		} finally {
@@ -61,7 +61,7 @@ public class TMapRequestor {
 			//System.out.println("sum" +sum);
 			return sum;
 		} catch (Exception e) {			
-			e.printStackTrace();
+			//e.printStackTrace();
 			//System.out.println("catch error" );
 			return null;
 		} finally {

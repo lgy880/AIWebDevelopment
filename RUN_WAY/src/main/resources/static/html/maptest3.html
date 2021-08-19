@@ -9,6 +9,10 @@
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxe5f789e074fa48fc99860ae9421175e1"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	
+<script type="text/javascript" src="../js/saveRoute.js"></script>	
 <script type="text/javascript">
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
@@ -38,6 +42,16 @@
 		    	latitude = "37.56689860"; // 위도
 		        longitude = "126.97871544";//경도
 		    }
+		});
+		
+		$("#recordRoute").click(function(){
+			"../local5.jes",
+			{
+				id:{id:login}
+			
+			},
+			function() {}
+			
 		});
 		
 	}
@@ -190,6 +204,25 @@
 						}
 					}//for문 [E]
 					drawLine(drawInfoArr);
+					
+					$("#saveRecordBtn").click(function() {
+						const id = $("#id").val();
+						const memo = $("#memo").val();
+
+						$.post("../local5.jes",
+							{
+								id : longitude,
+								route : latitude,
+								calorie : distance,
+								distance: distance,
+								memo: memo
+							},
+							function(data, status) {
+								alert(data);
+								window.close();
+							});
+					});
+					
 				}); 
    	 
     } 
@@ -216,13 +249,25 @@
 	</div>
 		
 		
-		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-		<div id="map_wrap" class="map_wrap3">
-			<div id="map_div"></div>
+	<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
+	<div id="map_wrap" class="map_wrap3">
+		<div id="map_div"></div>
+	</div>
+	<div class="map_act_btn_wrap clear_box"></div>
+	<p id="result"></p>
+	<br />
+	
+	<div id="cal_box">
+		<div id="id_memo">
+		id 입력<input id="id"> 
 		</div>
-		<div class="map_act_btn_wrap clear_box"></div>
-		<p id="result"></p>
-		<br />
+		<div id="id_memo">
+		memo <input id="memo"> 
+		</div>
+		<div> 
+		<input type="button" id="saveRecordBtn" value="저장" style="color: black;">
+		</div>
+	</div>
 		
 
 </body>
