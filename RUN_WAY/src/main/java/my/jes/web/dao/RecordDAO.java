@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import my.jes.web.vo.RecordVO;
 
-@Mapper
+//@Mapper
 @Repository
 public class RecordDAO {
 	
